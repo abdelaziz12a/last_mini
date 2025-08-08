@@ -6,7 +6,7 @@
 /*   By: aaboudra <aaboudra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 14:10:29 by elben-id          #+#    #+#             */
-/*   Updated: 2025/07/26 17:35:38 by aaboudra         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:55:23 by aaboudra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,10 @@ static pid_t	try_fork_and_handle(t_data *data)
 	return (pid);
 }
 
-static int	check_empty_args_and_handle(t_cmd *cmd, t_data *data)
-{
-	if (!cmd->args || !cmd->args[0])
-	{
-		data->last_exit_status = 0;
-		return (1);
-	}
-	if (cmd->args[0][0] == '\0')
-	{
-		display_error_message("", NULL, "command not found");
-		data->last_exit_status = EXIT_CMD_NOT_FOUND;
-		return (1);
-	}
-	return (0);
-}
-
 void	execute_single_external_command(t_cmd *cmd, t_data *data)
 {
 	pid_t	pid;
 
-	if (check_empty_args_and_handle(cmd, data))
-		return ;
 	pid = try_fork_and_handle(data);
 	g_sigint_received = 600;
 	if (pid == -1)

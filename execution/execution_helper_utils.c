@@ -6,7 +6,7 @@
 /*   By: aaboudra <aaboudra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:40:00 by elben-id          #+#    #+#             */
-/*   Updated: 2025/08/06 23:22:02 by aaboudra         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:55:06 by aaboudra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,4 @@ void	handle_path_error(t_cmd *cmd, t_data *data)
 		gc_free_ptr(path_env, data);
 	}
 	exit(EXIT_CMD_NOT_FOUND);
-	// exit(data->last_exit_status);
 }

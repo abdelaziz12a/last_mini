@@ -6,11 +6,28 @@
 /*   By: aaboudra <aaboudra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 21:52:12 by aaboudra          #+#    #+#             */
-/*   Updated: 2025/07/19 13:34:08 by aaboudra         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:57:07 by aaboudra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	handle_sigint(t_data *data)
+{
+	if (g_sigint_received == 1)
+	{
+		data->last_exit_status = 1;
+		g_sigint_received = 100;
+	}
+}
+
+void	handle_eof(t_data *data)
+{
+	printf("exit\n");
+	clear_history();
+	gc_free_all(data);
+	exit(data->last_exit_status);
+}
 
 int	main(int ac, char **av, char **env)
 {

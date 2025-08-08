@@ -6,7 +6,7 @@
 /*   By: aaboudra <aaboudra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 21:40:51 by aaboudra          #+#    #+#             */
-/*   Updated: 2025/08/07 18:52:31 by aaboudra         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:56:38 by aaboudra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,6 @@ void	parcer_and_exec(t_comand *token, t_data *data)
 	parse_command(token, data);
 	expand_all_commands(data);
 	start_execution(data);
-}
-
-static void	handle_sigint(t_data *data)
-{
-	if (g_sigint_received == 1)
-	{
-		data->last_exit_status = 1;
-		g_sigint_received = 100;
-	}
-}
-
-static void	handle_eof(t_data *data)
-{
-	printf("exit\n");
-	clear_history();
-	gc_free_all(data);
-	exit(data->last_exit_status);
 }
 
 void	parcing(t_data *data)

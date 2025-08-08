@@ -6,7 +6,7 @@
 /*   By: aaboudra <aaboudra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 12:35:00 by elben-id          #+#    #+#             */
-/*   Updated: 2025/07/26 17:35:55 by aaboudra         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:58:19 by aaboudra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,13 @@ void	start_execution(t_data *data)
 		data->last_exit_status = EXIT_GENERAL_ERROR;
 		return ;
 	}
-	if (!data->com->args || data->com->argc == 0)
-	{
-		data->last_exit_status = 0;
-		return ;
-	}
-	if (data->com->args[0][0] == '\0')
+	if (data->com->args && data->com->args[0] && data->com->args[0][0] == '\0')
 	{
 		display_error_message("", NULL, "command not found");
 		data->last_exit_status = EXIT_CMD_NOT_FOUND;
 		return ;
 	}
-	if (!data->com->next && is_builtin(data->com->args[0]))
+	if (!data->com->next && data->com->args && is_builtin(data->com->args[0]))
 		execute_builtin_parent(data->com, data);
 	else if (data->com->next)
 		execute_pipeline(data);

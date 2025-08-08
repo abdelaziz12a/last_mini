@@ -6,7 +6,7 @@
 /*   By: aaboudra <aaboudra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 21:54:20 by aaboudra          #+#    #+#             */
-/*   Updated: 2025/08/06 22:36:52 by aaboudra         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:58:00 by aaboudra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,5 +314,7 @@ int				try_chdir_and_handle_failure(t_cd_data *cd);
 int				handle_getcwd_failure_internal(t_cd_data *cd);
 void			replace_arg(t_cmd *cmd, int *i_ptr, char **split, t_data *data);
 void			signal_init1(void);
+void			handle_sigint(t_data *data);
+void			handle_eof(t_data *data);
 
 #endif

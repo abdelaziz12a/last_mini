@@ -6,7 +6,7 @@
 /*   By: aaboudra <aaboudra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:15:00 by elben-id          #+#    #+#             */
-/*   Updated: 2025/08/04 08:12:11 by aaboudra         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:54:32 by aaboudra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,8 @@ char	*extract_parent_dir(char *pwd_value, t_data *data)
 	char	*parent_dir;
 
 	i = ft_strlen(pwd_value) - 1;
-	// Skip trailing slashes
 	while (i > 0 && pwd_value[i] == '/')
 		i--;
-	// Find the last directory separator
 	while (i >= 0 && pwd_value[i] != '/')
 		i--;
 	if (i > 0)
